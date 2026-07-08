@@ -11445,9 +11445,11 @@ section.no-padding {
 }
 
 .skeleton-title {
-  width: 70%;
+  width: 120px;
   height: 18px;
-  margin-top: 10px;
+  background: #e3e3e3;
+  border-radius: 4px;
+  margin-bottom: 6px;
 }
 
 .skeleton-code {
@@ -11462,17 +11464,10 @@ section.no-padding {
   background: #e3e3e3;
   border-radius: 4px;
 }
-.skeleton-title {
-  width: 70%;
-  height: 20px;
-  background: #e3e3e3;
-  margin-top: 10px;
-  border-radius: 4px;
-}
 
 .skeleton-price {
-  width: 40%;
-  height: 18px;
+  width: 60px;
+  height: 16px;
   background: #e3e3e3;
   margin-top: 8px;
   border-radius: 4px;
@@ -11484,6 +11479,13 @@ section.no-padding {
   background: #e3e3e3;
   margin-top: 8px;
   border-radius: 4px;
+}
+
+.skeleton-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 0;
 }
 
 /* Shimmer effect */
