@@ -8,6 +8,7 @@ import "owl.carousel/dist/assets/owl.theme.default.css";
 import axios from "axios";
 import Countdown from "../Countdown";
 import ItemCard from "../ItemCard";
+import SkeletonCard from "../SkeletonCard";
 
 const NewItems = () => {
   const options = {
@@ -48,29 +49,7 @@ const NewItems = () => {
     fetchNewItems();
   }, []);
 
-  const SkeletonCard = () => (
-    <div className="nft__item skeleton">
-      <div className="author_list_pp">
-        <div className="skeleton-avatar"></div>
-      </div>
-
-      <div className="de_countdown">
-        <div className="skeleton-countdown"></div>
-      </div>
-
-      <div className="nft__item_wrap">
-        <div className="skeleton-img"></div>
-      </div>
-
-      <div className="nft__item_info">
-        <div className="skeleton-title"></div>
-        <div className="skeleton-price"></div>
-        <div className="skeleton-likes"></div>
-      </div>
-    </div>
-  );
-
-  return (
+    return (
     <section id="section-items" className="no-bottom">
       <div className="container">
         <div className="row">
@@ -91,18 +70,7 @@ const NewItems = () => {
           ) : (
             <OwlCarousel options={options}>
               {newItems?.map((item) => (
-                <ItemCard
-                  key={item.id}
-                  id={item.id}
-                  nftId={item.nftId}
-                  nftImage={item.nftImage}
-                  title={item.title}
-                  price={item.price}
-                  likes={item.likes}
-                  authorId={item.authorId}
-                  authorImage={item.authorImage}
-                  expiryDate={item.expiryDate}
-                />
+                <ItemCard key ={item.id} {...item}/>
               ))}
             </OwlCarousel>
           )}

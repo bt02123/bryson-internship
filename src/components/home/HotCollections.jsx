@@ -47,7 +47,7 @@ const HotCollections = () => {
     fetchCollections();
   }, []);
 
-  const SkeletonCard = () => (
+  const SkeletonCardHC = () => (
     <div className="nft_coll skeleton">
       <div className="nft_wrap">
         <div className="skeleton-img"></div>
@@ -79,7 +79,7 @@ const HotCollections = () => {
               <div className="row">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="col">
-                    <SkeletonCard />
+                    <SkeletonCardHC />
                   </div>
                 ))}
               </div>
