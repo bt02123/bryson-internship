@@ -5,12 +5,15 @@ import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
 import Countdown from "../Countdown";
 import ItemCard from "../ItemCard";
+import SkeletonCard from "../SkeletonCard";
 
 const ExploreItems = () => {
   const [exploreItems, setExploreItems] = useState([]);
   const [sortOption, setSortOption] = useState("");
   const [visibleCount, setVisibleCount] = useState(8);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   async function fetchExploreItems(filter = "") {
     const url = `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore${
       filter ? `?filter=${filter}` : ""
@@ -20,40 +23,17 @@ const ExploreItems = () => {
     setExploreItems(data);
   }
 
-    useEffect(() => {
-      fetchExploreItems();
-    }, []);
+  useEffect(() => {
+    fetchExploreItems();
+  }, []);
 
-    useEffect(() => {
-      fetchExploreItems(sortOption);
-    }, [sortOption]);
-
+  useEffect(() => {
+    fetchExploreItems(sortOption);
+  }, [sortOption]);
 
   const loadMore = () => {
     setVisibleCount((prev) => prev + 4);
   };
-
-  const SkeletonCard = () => (
-    <div className="nft__item skeleton">
-      <div className="author_list_pp">
-        <div className="skeleton-avatar"></div>
-      </div>
-
-      <div className="de_countdown">
-        <div className="skeleton-countdown"></div>
-      </div>
-
-      <div className="nft__item_wrap">
-        <div className="skeleton-img"></div>
-      </div>
-
-      <div className="nft__item_info">
-        <div className="skeleton-title"></div>
-        <div className="skeleton-price"></div>
-        <div className="skeleton-likes"></div>
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -74,7 +54,7 @@ const ExploreItems = () => {
         <div className="row">
           {[...Array(8)].map((_, i) => (
             <div key={i} className="col-6 col-md-3 mb-4">
-              <SkeletonCard className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"/>
+              <SkeletonCard className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12" />
             </div>
           ))}
         </div>
@@ -85,7 +65,7 @@ const ExploreItems = () => {
             className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
             style={{ display: "block", backgroundSize: "cover" }}
           >
-            <ItemCard {...item}/>
+            <ItemCard key={item.id} {...item} />
           </div>
         ))
       )}

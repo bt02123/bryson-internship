@@ -16,7 +16,7 @@ const TopSellers = () => {
     fetchTopSellers();
   }, []);
 
-  const SkeletonCard = () => (
+  const SkeletonCardTS = () => (
     <li className="skeleton-author">
       <div className="author_list_pp">
         <div className="skeleton-avatar"></div>
@@ -42,7 +42,7 @@ const TopSellers = () => {
           <div className="col-md-12">
             <ol className="author_list">
               {topSellers.length === 0
-                ? [...Array(12)].map((_, i) => <SkeletonCard key={i} />)
+                ? [...Array(12)].map((_, i) => <SkeletonCardTS key={i} />)
                 : topSellers.map((item) => (
                     <li key={item.id}>
                       <div className="author_list_pp">
