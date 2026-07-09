@@ -6,6 +6,8 @@ import OwlCarousel from "react-owl-carousel2";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import axios from "axios";
+import Countdown from "../Countdown";
+import ItemCard from "../ItemCard";
 
 const NewItems = () => {
   const options = {
@@ -68,43 +70,6 @@ const NewItems = () => {
     </div>
   );
 
-  const getRemainingTime = (expiryDate) => {
-    const now = Date.now();
-    const diff = expiryDate - now;
-    if (diff <= 0) {
-      return { hours: 0, minutes: 0, seconds: 0 };
-    }
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
-
-    return { hours, minutes, seconds };
-  };
-
-  const CountdownItem = ({ item }) => {
-    const expiry = item.expiryDate;
-
-    const [timeLeft, setTimeLeft] = useState(
-      expiry ? getRemainingTime(expiry) : { hours: 0, minutes: 0, seconds: 0 },
-    );
-
-    useEffect(() => {
-      if (!expiry) return;
-      const interval = setInterval(() => {
-        setTimeLeft(getRemainingTime(expiry));
-      }, 1000);
-
-      return () => clearInterval(interval);
-    }, [expiry]);
-
-    if (!expiry) return null;
-
-    return (
-      <div className="de_countdown">
-        {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-      </div>
-    );
-  };
   return (
     <section id="section-items" className="no-bottom">
       <div className="container">
@@ -126,60 +91,18 @@ const NewItems = () => {
           ) : (
             <OwlCarousel options={options}>
               {newItems?.map((item) => (
-                <div key={item.id}>
-                  <div className="nft__item">
-                    <div className="author_list_pp">
-                      <Link
-                        to={`/author/${item.authorId}`}
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title={item.authorId}
-                      >
-                        <img className="lazy" src={item.authorImage} alt="" />
-                        <i className="fa fa-check"></i>
-                      </Link>
-                    </div>
-                    <CountdownItem item={item} />
-
-                    <div className="nft__item_wrap">
-                      <div className="nft__item_extra">
-                        <div className="nft__item_buttons">
-                          <button>Buy Now</button>
-                          <div className="nft__item_share">
-                            <h4>Share</h4>
-                            <a href="" target="_blank" rel="noreferrer">
-                              <i className="fa fa-facebook fa-lg"></i>
-                            </a>
-                            <a href="" target="_blank" rel="noreferrer">
-                              <i className="fa fa-twitter fa-lg"></i>
-                            </a>
-                            <a href="">
-                              <i className="fa fa-envelope fa-lg"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-
-                      <Link to={`/item-details/${item.nftId}`}>
-                        <img
-                          src={item.nftImage}
-                          className="lazy nft__item_preview"
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                    <div className="nft__item_info">
-                      <Link to={`/item-details/${item.nftId}`}>
-                        <h4>{item.title}</h4>
-                      </Link>
-                      <div className="nft__item_price">{item.price} ETH</div>
-                      <div className="nft__item_like">
-                        <i className="fa fa-heart"></i>
-                        <span>{item.likes}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <ItemCard
+                  key={item.id}
+                  id={item.id}
+                  nftId={item.nftId}
+                  nftImage={item.nftImage}
+                  title={item.title}
+                  price={item.price}
+                  likes={item.likes}
+                  authorId={item.authorId}
+                  authorImage={item.authorImage}
+                  expiryDate={item.expiryDate}
+                />
               ))}
             </OwlCarousel>
           )}

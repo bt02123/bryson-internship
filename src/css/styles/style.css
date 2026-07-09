@@ -11488,6 +11488,12 @@ section.no-padding {
   padding: 10px 0;
 }
 
+.de_countdown.expired {
+  color: #ff3b3b;
+  font-weight: bold;
+}
+
+
 /* Shimmer effect */
 .skeleton *::after {
   content: "";
