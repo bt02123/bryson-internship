@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AuthorImage from "../../images/author_thumbnail.jpg";
-import nftImage from "../../images/nftImage.jpg";
 import OwlCarousel from "react-owl-carousel2";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
