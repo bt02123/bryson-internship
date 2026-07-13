@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import axios from "axios";
+import AuthorItems from "../author/AuthorItems";
 
 const TopSellers = () => {
   const [topSellers, setTopSellers] = useState([]);
@@ -45,21 +46,27 @@ const TopSellers = () => {
                 ? [...Array(12)].map((_, i) => <SkeletonCardTS key={i} />)
                 : topSellers.map((item) => (
                     <li key={item.id}>
-                      <div className="author_list_pp">
-                        <Link to={`/author/${item.authorId}`}>
-                          <img
-                            className="lazy pp-author"
-                            src={item.authorImage}
-                            alt=""
-                          />
-                          <i className="fa fa-check"></i>
-                        </Link>
-                      </div>
-                      <div className="author_list_info">
-                        <Link to={`/author/${item.authorId}`}>
-                          {item.authorName}
-                        </Link>
-                        <span>{item.price} ETH</span>
+                      <div
+                        data-aos="fade-left"
+                        data-aos-easing="linear"
+                        data-aos-delay={item * 100}
+                      >
+                        <div className="author_list_pp">
+                          <Link to={`/author/${item.authorId}`}>
+                            <img
+                              className="lazy pp-author"
+                              src={item.authorImage}
+                              alt=""
+                            />
+                            <i className="fa fa-check"></i>
+                          </Link>
+                        </div>
+                        <div className="author_list_info">
+                          <Link to={`/author/${item.authorId}`}>
+                            {item.authorName}
+                          </Link>
+                          <span>{item.price} ETH</span>
+                        </div>
                       </div>
                     </li>
                   ))}

@@ -43,7 +43,11 @@ const AuthorItems = () => {
             <div className="row">
               {authorItems.map((item) => (
                 <div key={item.id} className="col-6 col-md-3 mb-4">
-                  <div className="nft__item">
+                  <div data-aos="fade-up"
+                        data-aos-easing="linear"
+                        data-aos-duration="500"
+                        data-aos-delay={item * 100}
+                        className="nft__item">
                     <div className="author_list_pp">
                       <Link to={`/author/${authorId}`}>
                         <img className="lazy" src={authorImage} alt="" />

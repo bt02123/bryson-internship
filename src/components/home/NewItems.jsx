@@ -68,7 +68,9 @@ const NewItems = () => {
           ) : (
             <OwlCarousel options={options}>
               {newItems?.map((item) => (
-                <ItemCard key ={item.id} {...item}/>
+                <div data-aos= "fade-left" data-aos-easing="linear" className="nft_coll" >
+                  <ItemCard key ={item.id} {...item}/>
+                </div>
               ))}
             </OwlCarousel>
           )}
