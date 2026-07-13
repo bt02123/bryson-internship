@@ -87,7 +87,7 @@ const HotCollections = () => {
               <OwlCarousel options={options}>
                 {collections?.map((item) => (
                   <div key={item.id}>
-                    <div className="nft_coll">
+                    <div data-aos= "fade-left" data-aos-easing="linear" className="nft_coll">
                       <div className="nft_wrap">
                         <Link to={`/item-details/${item.nftId}`}>
                           <img

@@ -74,7 +74,7 @@ const ItemDetails = () => {
                 <SkeletonItem />
               ) : (
                 <>
-                  <div className="col-md-6 text-center">
+                  <div data-aos="fade-in" data-aos-duration="1500" className="col-md-6 text-center">
                     <img
                       src={itemDetails.nftImage}
                       className="img-fluid img-rounded mb-sm-30 nft-image"
@@ -83,11 +83,15 @@ const ItemDetails = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="item_info">
-                      <h2>
+                      <h2 data-aos="fade-up">
                         {itemDetails.title} {itemDetails.tag}
                       </h2>
 
-                      <div className="item_info_counts">
+                      <div
+                        data-aos="fade-up"
+                        data-aos-delay="100"
+                        className="item_info_counts"
+                      >
                         <div className="item_info_views">
                           <i className="fa fa-eye"></i>
                           {itemDetails.views}
@@ -97,9 +101,15 @@ const ItemDetails = () => {
                           {itemDetails.likes}
                         </div>
                       </div>
-                      <p>{itemDetails.description}</p>
+                      <p data-aos="fade-up" data-aos-delay="300">
+                        {itemDetails.description}
+                      </p>
                       <div className="d-flex flex-row">
-                        <div className="mr40">
+                        <div
+                          data-aos="fade-up"
+                          data-aos-delay="500"
+                          className="mr40"
+                        >
                           <h6>Owner</h6>
                           <div className="item_author">
                             <div className="author_list_pp">
@@ -121,7 +131,11 @@ const ItemDetails = () => {
                         </div>
                       </div>
                       <div className="de_tab tab_simple">
-                        <div className="de_tab_content">
+                        <div
+                          data-aos="fade-up"
+                          data-aos-delay="700"
+                          className="de_tab_content"
+                        >
                           <h6>Creator</h6>
                           <div className="item_author">
                             <div className="author_list_pp">
@@ -142,10 +156,12 @@ const ItemDetails = () => {
                           </div>
                         </div>
                         <div className="spacer-40"></div>
-                        <h6>Price</h6>
-                        <div className="nft-item-price">
-                          <img src={EthImage} alt="" />
-                          <span>{itemDetails.price}</span>
+                        <div data-aos="fade-up" data-aos-delay="900">
+                          <h6>Price</h6>
+                          <div className="nft-item-price">
+                            <img src={EthImage} alt="" />
+                            <span>{itemDetails.price}</span>
+                          </div>
                         </div>
                       </div>
                     </div>

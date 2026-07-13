@@ -62,6 +62,10 @@ const ExploreItems = () => {
             key={item.id}
             className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
             style={{ display: "block", backgroundSize: "cover" }}
+            data-aos="fade-down"
+            data-aos-easing="linear"
+            data-aos-duration="500"
+            data-aos-delay={item * 100}
           >
             <ItemCard key={item.id} {...item} />
           </div>
