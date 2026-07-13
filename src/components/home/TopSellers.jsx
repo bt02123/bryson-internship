@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import AuthorItems from "../author/AuthorItems";
 
 const TopSellers = () => {
   const [topSellers, setTopSellers] = useState([]);
