@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import AuthorImage from "../../images/author_thumbnail.jpg";
 import nftImage from "../../images/nftImage.jpg";
 import axios from "axios";
-import Countdown from "../Countdown";
 import ItemCard from "../ItemCard";
 import SkeletonCard from "../SkeletonCard";
 
