@@ -4,10 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import SkeletonCard from "../SkeletonCard";
 
-const Author = () => {
-  const { authorId } = useParams();
-};
-
 const AuthorItems = () => {
   const { authorId } = useParams();
   const [authorItems, setAuthorItems] = useState([]);
@@ -59,15 +55,15 @@ const AuthorItems = () => {
                           <button>Buy Now</button>
                           <div className="nft__item_share">
                             <h4>Share</h4>
-                            <a target="_blank" rel="noreferrer">
+                            <button>
                               <i className="fa fa-facebook fa-lg"></i>
-                            </a>
-                            <a target="_blank" rel="noreferrer">
+                            </button>
+                            <button>
                               <i className="fa fa-twitter fa-lg"></i>
-                            </a>
-                            <a>
+                            </button>
+                            <button>
                               <i className="fa fa-envelope fa-lg"></i>
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </div>
